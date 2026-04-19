@@ -32,8 +32,8 @@
             </div>
         </section>
 
-        <section class="grid gap-5 xl:grid-cols-12">
-            <div class="space-y-5 xl:col-span-4">
+        <section class="grid gap-5 lg:grid-cols-12">
+            <div class="space-y-5 lg:col-span-4">
                 <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                     <div class="mb-4 flex items-center justify-between">
                         <div>
@@ -87,7 +87,7 @@
                 </article>
             </div>
 
-            <article class="overflow-hidden rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] xl:col-span-8">
+            <article class="overflow-hidden rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] lg:col-span-8">
                 <div class="mb-4 flex items-start justify-between gap-3">
                     <div>
                         <flux:heading size="lg">{{ __('Photo gallery') }}</flux:heading>
@@ -115,7 +115,7 @@
             </article>
         </section>
 
-        <section class="grid gap-5 xl:grid-cols-3">
+        <section class="grid gap-5 lg:grid-cols-3">
 
             <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
