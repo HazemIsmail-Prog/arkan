@@ -32,8 +32,7 @@ class UserController extends Controller
         abort_if(!auth()->user()->hasPermissionTo('create_user'), 403);
         $validated = $request->validate([
             'company_id' => 'required|exists:companies,id',
-            'title_ar' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'sort_order' => 'required|integer',
             'is_active' => 'required|boolean',
             'name' => 'required|string|max:255',
@@ -55,8 +54,7 @@ class UserController extends Controller
         abort_if(!auth()->user()->hasPermissionTo('update_user'), 403);
         $validated = $request->validate([
             'company_id' => 'required|exists:companies,id',
-            'title_ar' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'sort_order' => 'required|integer',
             'is_active' => 'required|boolean',
             'name' => 'required|string|max:255',

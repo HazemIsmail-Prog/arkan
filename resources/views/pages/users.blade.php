@@ -48,7 +48,7 @@
                                 <td x-text="user.name"></td>
                                 <td x-text="user.email"></td>
                                 <td x-text="user.company.name"></td>
-                                <td x-text="user.title_ar"></td>
+                                <td x-text="user.title"></td>
                                 <td x-text="user.sort_order"></td>
                                 <td x-text="user.is_active ? '{{ __('Active') }}' : '{{ __('Inactive') }}'"></td>
                                 <td>

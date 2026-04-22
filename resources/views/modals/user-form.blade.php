@@ -13,8 +13,7 @@
                 <option x-bind:value="company.id" x-text="company.name"></option>
             </template>
         </flux:select>
-        <flux:input x-model="form.title_ar" label="{{ __('Title (Arabic)') }}" />
-        <flux:input x-model="form.title_en" label="{{ __('Title (English)') }}" />
+        <flux:input x-model="form.title" label="{{ __('Title') }}" />
         <flux:input x-model="form.sort_order" label="{{ __('Sort Order') }}" type="number" />
         <flux:input x-model="form.name" label="{{ __('Name') }}" />
         <flux:input x-model="form.email" label="{{ __('Email') }}" type="email" />
