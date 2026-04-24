@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EquipmentSeeder::class,
             ApprovalSeeder::class,
+            // SettingSeeder::class,
         ]);
 
         $permissions = Permission::pluck('id');

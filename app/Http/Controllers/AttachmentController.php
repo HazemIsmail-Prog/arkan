@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Attachment;
 use Illuminate\Support\Facades\Storage;
 use App\Services\AttachmentService;
-use Illuminate\Support\Facades\Crypt;
 
 class AttachmentController extends Controller
 {
@@ -26,7 +25,7 @@ class AttachmentController extends Controller
             'description_ar' => 'required|string|max:255',
             'expires_at' => 'nullable|date',
             'notify_before' => 'nullable|integer',
-            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|exclude',
+            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif,svg,webp|exclude',
             'attachable_type' => 'required|string|max:255',
             'attachable_id' => 'required|integer',
             'is_confidential' => 'nullable|boolean',
@@ -43,7 +42,7 @@ class AttachmentController extends Controller
             'description_ar' => 'required|string|max:255',
             'expires_at' => 'nullable|date',
             'notify_before' => 'nullable|integer',
-            'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|exclude',
+            'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif,svg,webp|exclude',
             'is_confidential' => 'nullable|boolean',
         ]);
         if($request->hasFile('file')) {
@@ -76,11 +75,11 @@ class AttachmentController extends Controller
         return back();
     }
 
-    public function view($encrypted_id)
+    public function view(Request $request, $encrypted_id)
     {
 
         $decrypted_attachment = Attachment::find(decrypt($encrypted_id));
-        if(!auth()->user()->hasPermissionTo('view_confidential_attachments') && $decrypted_attachment->is_confidential){
+        if(!$request->user()->hasPermissionTo('view_confidential_attachments') && $decrypted_attachment->is_confidential){
             abort(403, 'Unauthorized action.');
         }
         return Storage::disk('s3')->response($decrypted_attachment->path);

@@ -8,9 +8,9 @@ use Illuminate\Http\JsonResponse;
 
 class EquipmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_equipment'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_equipment'), 403);
         if (request()->wantsJson()) {
             return Equipment::query()
                 ->orderBy('name', 'asc')
@@ -21,7 +21,7 @@ class EquipmentController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_equipment'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_equipment'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
@@ -33,7 +33,7 @@ class EquipmentController extends Controller
 
     public function update(Request $request, Equipment $equipment)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_equipment'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_equipment'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
@@ -43,9 +43,9 @@ class EquipmentController extends Controller
         return response()->json($equipment);
     }
 
-    public function destroy(Equipment $equipment)
+    public function destroy(Request $request, Equipment $equipment)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_equipment'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_equipment'), 403);
         $equipment->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

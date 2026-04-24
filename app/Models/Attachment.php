@@ -17,13 +17,15 @@ class Attachment extends Model
         return $this->morphTo();
     }
 
-    protected $appends = ['full_path', 'description', 'formatted_expires_at', 'is_expired', 'notify_at', 'notify_now', 'encrypted_id'];
+    protected $appends = ['full_path', 'description', 'formatted_expires_at', 'is_expired', 'notify_at', 'notify_now', 'encrypted_id', 'view_url'];
 
     public function getFullPathAttribute()
     {
         return $this->path;
         if (Storage::disk('s3')->exists($this->path) && $this->path) {
             return Storage::disk('s3')->url($this->path);
+            // return Storage::disk('s3')->temporaryUrl($this->path, now()->addMinutes(5));
+
         }
         return null;
     }
@@ -64,5 +66,11 @@ class Attachment extends Model
         return encrypt($this->id);
     }
 
+    public function getViewUrlAttribute()
+    {
+        // return route('attachments.view', ['encrypted_id' => $this->encrypted_id]);
+        return Storage::disk('s3')->temporaryUrl($this->path, now()->addMinutes(5));
+
+    }
 
 }

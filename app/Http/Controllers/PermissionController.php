@@ -8,9 +8,9 @@ use Illuminate\Http\JsonResponse;
 
 class PermissionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_permission'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_permission'), 403);
         if (request()->wantsJson()) {
             return Permission::paginate(request()->per_page ?? 10);
         }
@@ -19,7 +19,7 @@ class PermissionController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_permission'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_permission'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description_en' => 'nullable|string|max:255',
@@ -31,7 +31,7 @@ class PermissionController extends Controller
 
     public function update(Request $request, Permission $permission)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_permission'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_permission'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description_en' => 'nullable|string|max:255',
@@ -41,9 +41,9 @@ class PermissionController extends Controller
         return response()->json($permission);
     }
 
-    public function destroy(Permission $permission)
+    public function destroy(Request $request, Permission $permission)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_permission'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_permission'), 403);
         $permission->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

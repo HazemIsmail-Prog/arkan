@@ -35,6 +35,9 @@
                     @if(auth()->user()->hasPermissionTo('view_all_equipment'))
                         <flux:navlist.item icon="users" :href="route('equipment.index')" :current="request()->routeIs('equipment.index')" wire:navigate>{{ __('Equipment') }}</flux:navlist.item>
                     @endif
+                    @if(auth()->user()->hasPermissionTo('update_setting'))
+                        <flux:navlist.item icon="users" :href="route('project-settings.edit')" :current="request()->routeIs('project-settings.edit')" wire:navigate>{{ __('Project Settings') }}</flux:navlist.item>
+                    @endif
                 </flux:navlist.group>
             </flux:navlist>
 

@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_role'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_role'), 403);
         if (request()->wantsJson()) {
             return Role::query()
                 ->with('permissions')
@@ -24,7 +24,7 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_role'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_role'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
@@ -38,7 +38,7 @@ class RoleController extends Controller
 
     public function update(Request $request, Role $role)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_role'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_role'), 403);
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
@@ -49,9 +49,9 @@ class RoleController extends Controller
         return response()->json($role->load('permissions'));
     }
 
-    public function destroy(Role $role)
+    public function destroy(Request $request, Role $role)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_role'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_role'), 403);
         $role->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

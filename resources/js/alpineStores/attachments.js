@@ -73,6 +73,8 @@ document.addEventListener('alpine:init', () => {
                 }
             })
             .then(response => {
+                const fileInput = document.getElementById('fileInput');
+                if (fileInput) fileInput.value = null;
                 window.dispatchEvent(new CustomEvent('attachment-added', { detail: response.data }));
                 Flux.modal('attachment-form-modal').close();
             })

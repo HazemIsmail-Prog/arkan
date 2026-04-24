@@ -12,6 +12,7 @@ use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RequiredApprovalController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -74,6 +75,12 @@ Route::middleware(['auth', 'language'])->group(function () {
         Route::post('equipment', 'store');
         Route::put('equipment/{equipment}', 'update');
         Route::delete('equipment/{equipment}', 'destroy');
+    });
+
+    // settings
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('project-settings', 'edit')->name('project-settings.edit');
+        Route::put('project-settings', 'update');
     });
 
     // attachments

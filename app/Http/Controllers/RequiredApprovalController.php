@@ -8,9 +8,9 @@ use Illuminate\Http\JsonResponse;
 
 class RequiredApprovalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_requiredapproval'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_requiredapproval'), 403);
         if (request()->wantsJson()) {
             return RequiredApproval::query()
                 ->orderBy('title', 'asc')
@@ -21,7 +21,7 @@ class RequiredApprovalController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_requiredapproval'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_requiredapproval'), 403);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'authority' => 'required|string|max:255',
@@ -33,7 +33,7 @@ class RequiredApprovalController extends Controller
 
     public function update(Request $request, RequiredApproval $requiredApproval)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_requiredapproval'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_requiredapproval'), 403);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'authority' => 'required|string|max:255',
@@ -43,9 +43,9 @@ class RequiredApprovalController extends Controller
         return response()->json($requiredApproval);
     }
 
-    public function destroy(RequiredApproval $requiredApproval)
+    public function destroy(Request $request, RequiredApproval $requiredApproval)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_requiredapproval'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_requiredapproval'), 403);
         $requiredApproval->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

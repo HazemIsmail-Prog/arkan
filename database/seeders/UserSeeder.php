@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
                 'email' => 'bahy@unipiles.com', 
                 'password' => bcrypt('123456'), 
                 'company_id' => 3,
-                'title' => 'Project Engineer',
+                'title' => 'Contractor Representitive / Project Director',
                 'sort_order' => 5,
             ],
             [

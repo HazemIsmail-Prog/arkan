@@ -8,9 +8,9 @@ use Illuminate\Http\JsonResponse;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_company'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_company'), 403);
         if (request()->wantsJson()) {
             return Company::query()
                 ->orderBy(app()->getLocale() === 'ar' ? 'name_ar' : 'name_en', 'asc')
@@ -21,7 +21,7 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_company'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_company'), 403);
         $validated = $request->validate([
             'name_ar' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
@@ -33,7 +33,7 @@ class CompanyController extends Controller
 
     public function update(Request $request, Company $company)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_company'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_company'), 403);
         $validated = $request->validate([
             'name_ar' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
@@ -43,9 +43,9 @@ class CompanyController extends Controller
         return response()->json($company);
     }
 
-    public function destroy(Company $company)
+    public function destroy(Request $request, Company $company)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_company'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_company'), 403);
         $company->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

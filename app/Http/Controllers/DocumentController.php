@@ -10,9 +10,9 @@ use App\Services\AttachmentService;
 
 class DocumentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_document'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_document'), 403);
         if (request()->wantsJson()) {
             $filters = request()->filters;
             return Document::query()
@@ -43,7 +43,7 @@ class DocumentController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_document'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_document'), 403);
         $validated = $request->validate([
             'date' => 'nullable|date',
             'type' => 'nullable|string|max:255',
@@ -59,7 +59,7 @@ class DocumentController extends Controller
 
     public function update(Request $request, Document $document)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_document'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_document'), 403);
         $validated = $request->validate([
             'date' => 'nullable|date',
             'type' => 'nullable|string|max:255',
@@ -73,9 +73,9 @@ class DocumentController extends Controller
         return response()->json($document);
     }
 
-    public function destroy(Document $document)
+    public function destroy(Request $request, Document $document)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_document'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_document'), 403);
         // begin transaction
         DB::beginTransaction();
         try {

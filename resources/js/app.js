@@ -14,4 +14,6 @@ import './alpineComponents/companies';
 import './alpineComponents/documents';
 import './alpineComponents/approvals';
 import './alpineComponents/equipment';
+import './alpineComponents/settings';
 import './alpineStores/attachments';
+

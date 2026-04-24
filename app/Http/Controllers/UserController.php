@@ -12,13 +12,14 @@ use App\Models\Company;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('view_all_user'), 403);
+        abort_if(!$request->user()->hasPermissionTo('view_all_user'), 403);
         if (request()->wantsJson()) {
             return User::query()
                 ->with('roles')
                 ->with('permissions')
+                ->with('company')
                 ->paginate(request()->per_page ?? 10);
         }
         $roles = Role::all();
@@ -29,7 +30,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(!auth()->user()->hasPermissionTo('create_user'), 403);
+        abort_if(!$request->user()->hasPermissionTo('create_user'), 403);
         $validated = $request->validate([
             'company_id' => 'required|exists:companies,id',
             'title' => 'required|string|max:255',
@@ -51,7 +52,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        abort_if(!auth()->user()->hasPermissionTo('update_user'), 403);
+        abort_if(!$request->user()->hasPermissionTo('update_user'), 403);
         $validated = $request->validate([
             'company_id' => 'required|exists:companies,id',
             'title' => 'required|string|max:255',
@@ -75,13 +76,13 @@ class UserController extends Controller
         $validated = $request->validate([
             'locale' => 'required|string|max:255|in:en,ar',
         ]);
-        auth()->user()->update(['locale' => $validated['locale']]);
+        $request->user()->update(['locale' => $validated['locale']]);
         return back();
     }
 
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        abort_if(!auth()->user()->hasPermissionTo('delete_user'), 403);
+        abort_if(!$request->user()->hasPermissionTo('delete_user'), 403);
         $user->delete();
         return response()->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

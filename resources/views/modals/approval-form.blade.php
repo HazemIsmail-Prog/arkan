@@ -9,7 +9,13 @@
         </template>
         <flux:input x-model="form.title" label="{{__('Title')}}" />
         <flux:input x-model="form.authority" label="{{__('Authority')}}" />
-        <flux:input x-model="form.status" label="{{__('Status')}}" />
+        <flux:input x-model="form.status" list="status-datalist" label="{{ __('Status') }}" />
+        <datalist id="status-datalist">
+            <option value="pending" />
+            <option value="in_progress" />
+            <option value="completed" />
+            <option value="rejected" />
+        </datalist>
         <div class="flex">
             <flux:spacer />
             <flux:button type="submit" variant="primary">{{__('Save')}}</flux:button>

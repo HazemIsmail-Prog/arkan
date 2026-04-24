@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use App\Models\RequiredApproval;
 use App\Models\Equipment;
+use Carbon\Carbon;
+use App\Models\Setting;
 
 class DashboardController extends Controller
 {
@@ -18,26 +20,35 @@ class DashboardController extends Controller
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();
+
+
+        $setting = Setting::first();
+
+        
             
         // Work progress
-        $workProgressPct = 20;
+        $workProgressPct = $setting ? $setting->work_progress : 0;
 
         // Project timeline
-        $timelineProgressPct = 50;
+        // project time line is based on the project start date and the project end date and the current date
+        $projectStartDate = $setting ? $setting->project_start_date : null;
+        $projectEndDate = $setting ? $setting->project_end_date : null;
+        $currentDate = now();
+        $projectDuration = Carbon::parse($projectEndDate)->diffInDays(Carbon::parse($projectStartDate));
+        $currentProgress = Carbon::parse($currentDate)->diffInDays(Carbon::parse($projectStartDate));
+        $timelineProgressPct = 0;
+        if($projectStartDate && $projectEndDate){
+            $timelineProgressPct = round(($currentProgress / $projectDuration) * 100, 1);
+        }
 
-        $timelineData = [
-            ['label' => __('Discovery'), 'pct' => 18, 'color' => 'rgb(56 189 248)'],
-            ['label' => __('Design'), 'pct' => 22, 'color' => 'rgb(99 102 241)'],
-            ['label' => __('Build'), 'pct' => 35, 'color' => 'rgb(34 197 94)'],
-            ['label' => __('Delivery'), 'pct' => 25, 'color' => 'rgb(161 161 170)'],
-        ];
+        $images = $setting ? $setting->attachments->pluck('view_url') : [];
 
-        $images = [
-            'https://picsum.photos/seed/arkan-a/960/540',
-            'https://picsum.photos/seed/arkan-b/960/540',
-            'https://picsum.photos/seed/arkan-c/960/540',
-            'https://picsum.photos/seed/arkan-d/960/540',
-        ];
+        // $images = [
+        //     'https://picsum.photos/seed/arkan-a/960/540',
+        //     'https://picsum.photos/seed/arkan-b/960/540',
+        //     'https://picsum.photos/seed/arkan-c/960/540',
+        //     'https://picsum.photos/seed/arkan-d/960/540',
+        // ];
 
         $approvals = RequiredApproval::query()
             ->orderBy('created_at', 'desc')
@@ -48,7 +59,6 @@ class DashboardController extends Controller
             ->get();
 
         $dashboardPayload = [
-            'timelineSegments' => $timelineData,
             'timelineProgressPct' => $timelineProgressPct,
             'workProgressPct' => $workProgressPct,
             'galleryImages' => $images,

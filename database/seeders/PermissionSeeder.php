@@ -24,6 +24,7 @@ class PermissionSeeder extends Seeder
             'Document_Attachments',
             'RequiredApproval',
             'Equipment',
+            'Setting',
         ];
 
         $actions = [
@@ -78,6 +79,10 @@ class PermissionSeeder extends Seeder
             'Equipment' => [
                 'en' => 'Equipment',
                 'ar' => 'المعدات',
+            ],
+            'Setting' => [
+                'en' => 'Setting',
+                'ar' => 'الإعدادات',
             ],
         ];
 
