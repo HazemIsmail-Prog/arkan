@@ -98,8 +98,8 @@
                 <div class="overflow-hidden rounded-2xl border border-white/70 bg-white/60 shadow-inner dark:border-zinc-700/80 dark:bg-zinc-900/40">
                     <div class="relative aspect-[16/9] w-full">
                         <template x-for="(src, i) in galleryImages" :key="i">
-                            <div x-show="slideIndex === i" x-transition.opacity.duration.300ms class="absolute inset-0">
-                                <img :src="src" class="size-full object-center" decoding="async" x-bind:alt="galleryPhotoAlt(i)" />
+                            <div x-show="slideIndex === i" x-transition.opacity.duration.300ms class="absolute inset-0 flex items-center justify-center">
+                                <img :src="src" class="h-full" decoding="async" x-bind:alt="galleryPhotoAlt(i)" />
                             </div>
                         </template>
                     </div>
@@ -115,7 +115,7 @@
 
         <section class="grid gap-5 lg:grid-cols-3">
 
-            <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <article class="h-fit overflow-y-auto rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
                     <flux:heading size="lg">{{ __('Project Stakeholders') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="projectTeam.length"></span> {{ __('members') }}</flux:text>
@@ -133,7 +133,7 @@
                 </div>
             </article>
 
-            <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <article class="h-fit overflow-y-auto rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
                     <flux:heading size="lg">{{ __('Required Approvals & Permits') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="approvals.length"></span> {{ __('items') }}</flux:text>
@@ -156,7 +156,7 @@
                 </div>
             </article>
 
-            <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <article class="h-fit overflow-y-auto rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
                     <flux:heading size="lg">{{ __('Equipment') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="equipment.length"></span> {{ __('units') }}</flux:text>

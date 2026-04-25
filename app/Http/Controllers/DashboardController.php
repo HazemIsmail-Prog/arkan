@@ -43,19 +43,14 @@ class DashboardController extends Controller
 
         $images = $setting ? $setting->attachments->pluck('view_url') : [];
 
-        // $images = [
-        //     'https://picsum.photos/seed/arkan-a/960/540',
-        //     'https://picsum.photos/seed/arkan-b/960/540',
-        //     'https://picsum.photos/seed/arkan-c/960/540',
-        //     'https://picsum.photos/seed/arkan-d/960/540',
-        // ];
-
         $approvals = RequiredApproval::query()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->get();
 
         $equipment = Equipment::query()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('location', 'desc')
+            ->orderBy('type', 'asc')
+            ->orderBy('name', 'asc')
             ->get();
 
         $dashboardPayload = [

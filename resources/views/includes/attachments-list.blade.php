@@ -9,7 +9,7 @@
                     <flux:icon.lock-closed class="size-4 text-yellow-500 inline-block mr-1 align-middle" title="Confidential" />
                 </template>
                 <a :href="`/attachments/${attachment.encrypted_id}`" target="_blank">
-                    <p x-text="attachment.description"></p>
+                    <p class="whitespace-pre-wrap" x-text="attachment.description"></p>
                     <p class="text-[8px]" x-text="attachment.formatted_expires_at"></p>
                 </a>
                 <template x-if="attachable.can_update_attachment">

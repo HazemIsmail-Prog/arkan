@@ -70,7 +70,7 @@ class DocumentController extends Controller
             'sent_to' => 'nullable|string|max:255',
         ]);
         $document->update($validated);
-        return response()->json($document);
+        return response()->json($document->load('attachments'));
     }
 
     public function destroy(Request $request, Document $document)
