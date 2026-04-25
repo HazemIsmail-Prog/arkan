@@ -5,11 +5,9 @@
         <section class="relative overflow-hidden rounded-3xl border border-white/60 bg-white/70 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08),0_2px_8px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_18px_38px_rgba(0,0,0,0.38),0_2px_8px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.05)] lg:p-7">
             <div class="absolute inset-x-10 -bottom-14 h-24 rounded-full bg-black/5 blur-2xl dark:bg-black/35"></div>
 
-            <div class="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                    <flux:heading size="xl">{{ __('Dashboard') }}</flux:heading>
-                    <flux:text class="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-300">{{ __('Monitor execution status, schedule completion, pending approvals, equipment availability, and active team members from one workspace.') }}</flux:text>
-                </div>
+            <div class="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+
+                <flux:heading size="xl">{{ __('Project Dashboard') }}</flux:heading>
 
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
                     <div class="rounded-2xl border border-white/70 bg-white/80 px-4 py-3 shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur dark:border-zinc-700/70 dark:bg-zinc-800/70 dark:shadow-[0_10px_24px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.04)]">
@@ -37,7 +35,7 @@
                 <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                     <div class="mb-4 flex items-center justify-between">
                         <div>
-                            <flux:heading size="lg">{{ __('Work progress') }}</flux:heading>
+                            <flux:heading size="lg">{{ __('Work Progress') }}</flux:heading>
                             <flux:text class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Percentage of planned project tasks completed against the approved scope.') }}</flux:text>
                         </div>
                     </div>
@@ -63,8 +61,8 @@
                 <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                     <div class="mb-4 flex items-center justify-between">
                         <div>
-                            <flux:heading size="lg">{{ __('Project timeline') }}</flux:heading>
-                            <flux:text class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Current completion level of scheduled phases versus the baseline timeline.') }}</flux:text>
+                            <flux:heading size="lg">{{ __('Project Timeline') }}</flux:heading>
+                            <flux:text class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Time Elapsed vs. Contract Duration.') }}</flux:text>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
@@ -89,7 +87,7 @@
             <article class="overflow-hidden rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] lg:col-span-8">
                 <div class="mb-4 flex items-start justify-between gap-3">
                     <div>
-                        <flux:heading size="lg">{{ __('Photo gallery') }}</flux:heading>
+                        <flux:heading size="lg">{{ __('Photo Gallery') }}</flux:heading>
                         <flux:text class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Latest on-site photos documenting construction progress and field activities.') }}</flux:text>
                     </div>
                     <div class="flex gap-1">
@@ -119,7 +117,7 @@
 
             <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
-                    <flux:heading size="lg">{{ __('Required approvals') }}</flux:heading>
+                    <flux:heading size="lg">{{ __('Required Approvals & Permits') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="approvals.length"></span> {{ __('items') }}</flux:text>
                 </div>
                 <div class="space-y-2">
@@ -163,7 +161,7 @@
 
             <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
-                    <flux:heading size="lg">{{ __('Project team') }}</flux:heading>
+                    <flux:heading size="lg">{{ __('Project Stakeholders') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="projectTeam.length"></span> {{ __('members') }}</flux:text>
                 </div>
                 <div class="space-y-2">
