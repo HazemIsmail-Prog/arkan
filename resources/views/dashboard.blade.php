@@ -101,7 +101,7 @@
                     <div class="relative aspect-[16/9] w-full">
                         <template x-for="(src, i) in galleryImages" :key="i">
                             <div x-show="slideIndex === i" x-transition.opacity.duration.300ms class="absolute inset-0">
-                                <img :src="src" class="size-full object-cover" loading="lazy" decoding="async" x-bind:alt="galleryPhotoAlt(i)" />
+                                <img :src="src" class="size-full object-center" decoding="async" x-bind:alt="galleryPhotoAlt(i)" />
                             </div>
                         </template>
                     </div>
