@@ -117,6 +117,24 @@
 
             <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
                 <div class="mb-4 flex items-end justify-between">
+                    <flux:heading size="lg">{{ __('Project Stakeholders') }}</flux:heading>
+                    <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="projectTeam.length"></span> {{ __('members') }}</flux:text>
+                </div>
+                <div class="space-y-2">
+                    <template x-for="member in projectTeam" :key="member.id">
+                        <div class="flex items-center gap-3 rounded-2xl border border-white/70 bg-white/80 p-3 shadow-[0_6px_18px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur dark:border-zinc-700/70 dark:bg-zinc-800/60 dark:shadow-[0_10px_22px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.04)]">
+                            <img :src="member.company.logo_url" class="h-9 w-9 rounded-lg border border-white/50 bg-white object-contain p-1 dark:border-zinc-700 dark:bg-zinc-800" />
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-zinc-900 dark:text-white" x-text="member.name"></p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400" x-text="member.title"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </article>
+
+            <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
+                <div class="mb-4 flex items-end justify-between">
                     <flux:heading size="lg">{{ __('Required Approvals & Permits') }}</flux:heading>
                     <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="approvals.length"></span> {{ __('items') }}</flux:text>
                 </div>
@@ -159,23 +177,7 @@
                 </div>
             </article>
 
-            <article class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1),0_4px_10px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-0.5 dark:border-zinc-700/70 dark:bg-zinc-900/65 dark:shadow-[0_20px_40px_rgba(0,0,0,0.36),0_3px_10px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)]">
-                <div class="mb-4 flex items-end justify-between">
-                    <flux:heading size="lg">{{ __('Project Stakeholders') }}</flux:heading>
-                    <flux:text class="text-xs text-zinc-400 dark:text-zinc-500"><span x-text="projectTeam.length"></span> {{ __('members') }}</flux:text>
-                </div>
-                <div class="space-y-2">
-                    <template x-for="member in projectTeam" :key="member.id">
-                        <div class="flex items-center gap-3 rounded-2xl border border-white/70 bg-white/80 p-3 shadow-[0_6px_18px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur dark:border-zinc-700/70 dark:bg-zinc-800/60 dark:shadow-[0_10px_22px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.04)]">
-                            <img :src="member.company.logo_url" class="h-9 w-9 rounded-lg border border-white/50 bg-white object-contain p-1 dark:border-zinc-700 dark:bg-zinc-800" />
-                            <div class="min-w-0">
-                                <p class="text-sm font-medium text-zinc-900 dark:text-white" x-text="member.name"></p>
-                                <p class="text-xs text-zinc-500 dark:text-zinc-400" x-text="member.title"></p>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </article>
+
 
         </section>
 
